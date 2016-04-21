@@ -5,9 +5,32 @@ body {
   margin: 0;
   padding: 0;
 }
-.container {
+#container {
+  transition-duration: 300ms;
   margin: 12% auto 0 auto;
-  width: 400px;
-  height: 400px;
-  background: rgba(0, 0, 0, 0.5);
+  width: 189px;
+  height: 100%;
+}
+#container .contentloader {
+  position: absolute;
+  border: 0.5px solid skyblue;
+  border-top: 0px;
+  width: 80px;
+  height: 240px;
+  padding: 2px;
+}
+#container .contentloader:last-child {
+  margin-left: 97px;
+}
+#container .contentloader .loader {
+  position: absolute;
+  width: 80px;
+  bottom: 2px;
+  background: skyblue;
+}
+#container .contentloader .loader.loader1 {
+  height: 36px;
+}
+#container .contentloader .loader.loader2 {
+  height: 134px;
 }

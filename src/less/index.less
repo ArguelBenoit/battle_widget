@@ -1,11 +1,36 @@
+@loaderwidth: 150px;
 
 body {
   background: #222;
   width: 100%; height: 100%;
   margin: 0; padding: 0;  
 }
-.container {
+
+#container {
+  transition-duration: 300ms;
   margin: 12% auto 0 auto;
-  width: 400px; height: 400px;
-  background: rgba(0, 0, 0, 0.5);
+  width: 189px; height: 100%;
+  .contentloader {
+    position: absolute;
+    border: 0.5px solid skyblue;
+    border-top: 0px;
+    width: 80px;
+    height: 240px;
+    padding: 2px;
+    &:last-child {
+      margin-left: 97px;
+    }
+    .loader {
+      position: absolute;
+      width: 80px;
+      bottom: 2px;
+      background: skyblue;
+      &.loader1 {
+        height: 36px;
+      }
+      &.loader2 {
+        height: 134px;
+      }
+    }
+  }
 }
