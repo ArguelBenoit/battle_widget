@@ -1,0 +1,30 @@
+{
+  "name": "battle_widget",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "babelify": "^7.2.0",
+    "exorcist": "^0.4.0",
+    "less": "^2.6.1",
+    "watch": "^0.17.1",
+    "watchify": "^3.7.0"
+  },
+  "devDependencies": {
+    "less": "^2.6.1",
+    "watch": "^0.17.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArguelBenoit/battle_widget.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArguelBenoit/battle_widget/issues"
+  },
+  "homepage": "https://github.com/ArguelBenoit/battle_widget#readme"
+}

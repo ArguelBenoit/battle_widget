@@ -1,0 +1,1 @@
+console.error("Error: Couldn't find preset \"es2015\" relative to directory \"/home/benoit/Bureau/battle_widget/src/js\" while parsing file: /home/benoit/Bureau/battle_widget/src/js/index.jsx");
