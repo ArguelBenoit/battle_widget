@@ -11,9 +11,7 @@ import ReactDOM from 'react-dom';
 
 var BattleWidget = React.createClass({
   render() {
-
     const levelFighter = [178, 138, 211];
-
     const styleContainer = {
       width: levelFighter.length * 100,
       height: 200
@@ -30,13 +28,18 @@ var BattleWidget = React.createClass({
       height: levelFighter[2],
       marginTop: 200 - levelFighter[2]
     };
+    const styleLoader4 = {
+      height: levelFighter[3],
+      marginTop: 200 - levelFighter[3]
+    };
     const styleUnitLine = {
       width: levelFighter.length * 100
     };
     return <div id="container" style={styleContainer}>
-      <div className="loader loader1" style={styleLoader1}></div>
-      <div className="loader loader2" style={styleLoader2}></div>
-      <div className="loader loader2" style={styleLoader3}></div>
+      <div className="loader" style={styleLoader1}></div>
+      <div className="loader" style={styleLoader2}></div>
+      <div className="loader" style={styleLoader3}></div>
+      <div className="loader" style={styleLoader4}></div>
       <hr className="unitline" style={styleUnitLine}/>
       <hr className="unitline" style={styleUnitLine}/>
       <hr className="unitline" style={styleUnitLine}/>
