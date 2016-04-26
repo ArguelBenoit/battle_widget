@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import BattleWidget from './BattleWidget.jsx';
 
-const data = [578, 138];
-
+const twCountBattle = [347, 214];
 
 ReactDOM.render(
-  <BattleWidget levelFighter={data} />,
+  <BattleWidget levelFighter={twCountBattle} />,
   document.getElementById('widgetbattle')
 );
