@@ -9,7 +9,7 @@ body {
   font-family: raleway;
   color: white;
   margin: 12% auto 0 auto;
-  border-bottom: solid 2px #FFB55C;
+  border-bottom: solid 2px rgba(255, 255, 255, 0.7);
 }
 #widgetbattle #container .p-00 {
   position: absolute;
@@ -47,7 +47,6 @@ body {
 }
 #widgetbattle #container .loadercontainer .loader {
   bottom: 0px;
-  background: #FFB55C;
   border-radius: 2px 2px 0 0;
 }
 #widgetbattle #container .loadercontainer .loader p {

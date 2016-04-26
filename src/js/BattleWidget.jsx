@@ -3,9 +3,10 @@ import React, {PropTypes} from 'react';
 function BattleWidget(props){
   //const levelFighter = props.levelFighter;
   const {levelFighter} = props;
+  const {width} = props;
+  const {height} = props;
+  const {color} = props;
 
-  const width = 100;
-  const height = 250;
   const widthLoader = width * 0.8;
   const widthImg = width * 0.66;
   const marginLeftLoader = width * 0.1;
@@ -28,20 +29,15 @@ function BattleWidget(props){
   }
 
   var levelFighterEvolved = levelFighter.map(function(n) {
-    return n * 100 / maxUnit;
+    return 0;
   });
   const styleContainer = {
-    width: levelFighterEvolved.length * width,
+    width: levelFighter.length * width,
     height: height
   };
   const styleLoaderContainer = {
     width: width,
     height: height
-  };
-  const styleProfileImg = {
-    width: widthImg,
-    marginLeft: marginLeftImg,
-    marginTop: (( 100 - levelFighterEvolved[0] ) * height / 100) - widthImg - 8
   };
   const styleUnitLine = {
     width: levelFighter.length * width,
@@ -50,25 +46,29 @@ function BattleWidget(props){
   const styleP00 = {
     marginTop: height - 13
   };
-  const styleLoader1height = ( height / 100 ) * levelFighterEvolved[0];
-  const styleLoader1 = {
-    width: widthLoader,
-    marginLeft: marginLeftLoader,
-    height: styleLoader1height,
-    marginTop: ( 100 - levelFighterEvolved[0] ) * height / 100
-  };
 
-  var content = [];
-  var i;
-  for (i = 0; i < levelFighter.length; i++) {
-    var oneLoader = <div className="loadercontainer" style={styleLoaderContainer}>
+  var content = levelFighter.map(function(level, i){
+    // return <BattleWidgetLoader level={level} maxUnit={maxUnit} />;
+    const percent = level * 100 / maxUnit;
+    const styleProfileImg = {
+      width: widthImg,
+      marginLeft: marginLeftImg,
+      marginTop: (( 100 - percent ) * height / 100) - widthImg - 8
+    };
+    var style = {
+      background: color,
+      width: widthLoader,
+      marginLeft: marginLeftLoader,
+      height: percent + '%',
+      marginTop: ( 100 - percent ) * height / 100
+    };
+    return <div key={i} className="loadercontainer" style={styleLoaderContainer}>
       <img src="img/profile.png" style={styleProfileImg}/>
-      <div className="loader" style={styleLoader1}>
-        <p>{levelFighter[i]} tw</p>
+      <div className="loader" style={style}>
+        <p>{level}.t</p>
       </div>
     </div>;
-    content.push(oneLoader);
-  }
+  });
 
   return <div id="container" style={styleContainer}>
     <p className="p-00" style={styleP00}>0.0</p>
@@ -91,7 +91,11 @@ function BattleWidget(props){
 }
 
 BattleWidget.propTypes = {
-  levelFighter: PropTypes.array
+  fighter: PropTypes.array,
+  levelFighter: PropTypes.array,
+  color: PropTypes.string,
+  height: PropTypes.number,
+  width: PropTypes.number
 };
 
 export default BattleWidget;
