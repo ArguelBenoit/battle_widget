@@ -1,22 +1,12 @@
 import React, {PropTypes} from 'react';
+import BattleWidgetPlot from './BattleWidgetPlot.jsx';
 
 function BattleWidget(props){
-  //const levelFighter = props.levelFighter;
-  const {levelFighter} = props;
-  const {width} = props;
-  const {height} = props;
-  const {color} = props;
-
-  const widthLoader = width * 0.8;
-  const widthImg = width * 0.66;
-  const marginLeftLoader = width * 0.1;
-  const marginLeftImg = width * 0.17;
+  const {levelFighter, width, height, color} = props;
   const unitLineHeight = height * 0.25;
-
   const levelFighterMax = levelFighter.reduce((memo, value) => {
     return Math.max(memo, value);
   }, 0);
-
   var maxUnit;
   if (levelFighterMax < 500) {
     var maxUnit = 500;
@@ -27,16 +17,11 @@ function BattleWidget(props){
   } if (levelFighterMax > 5000) {
     var maxUnit = levelFighterMax + levelFighterMax* 0.2;
   }
-
   var levelFighterEvolved = levelFighter.map(function(n) {
     return 0;
   });
   const styleContainer = {
     width: levelFighter.length * width,
-    height: height
-  };
-  const styleLoaderContainer = {
-    width: width,
     height: height
   };
   const styleUnitLine = {
@@ -48,28 +33,15 @@ function BattleWidget(props){
   };
 
   var content = levelFighter.map(function(level, i){
-    // return <BattleWidgetLoader level={level} maxUnit={maxUnit} />;
-    const percent = level * 100 / maxUnit;
-    const styleProfileImg = {
-      width: widthImg,
-      marginLeft: marginLeftImg,
-      marginTop: (( 100 - percent ) * height / 100) - widthImg - 8
+    const attributes = {
+      maxUnit,
+      height,
+      width,
+      color,
+      level
     };
-    var style = {
-      background: color,
-      width: widthLoader,
-      marginLeft: marginLeftLoader,
-      height: percent + '%',
-      marginTop: ( 100 - percent ) * height / 100
-    };
-    return <div key={i} className="loadercontainer" style={styleLoaderContainer}>
-      <img src="img/profile.png" style={styleProfileImg}/>
-      <div className="loader" style={style}>
-        <p>{level}.t</p>
-      </div>
-    </div>;
+    return <BattleWidgetPlot key={i} {...attributes} />;
   });
-
   return <div id="container" style={styleContainer}>
     <p className="p-00" style={styleP00}>0.0</p>
     <div className="allcontainerunitline">
@@ -91,7 +63,6 @@ function BattleWidget(props){
 }
 
 BattleWidget.propTypes = {
-  fighter: PropTypes.array,
   levelFighter: PropTypes.array,
   color: PropTypes.string,
   height: PropTypes.number,
