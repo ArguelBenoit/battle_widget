@@ -1,12 +1,21 @@
 import React, {PropTypes} from 'react';
+import { connect } from 'react-redux';
 import BattleWidgetPlot from './BattleWidgetPlot.jsx';
 
 function BattleWidget(props){
-  const {levelFighter, width, height, color} = props;
+  const {fighter, levelFighter, width, height, color} = props;
   const unitLineHeight = height * 0.25;
-  const levelFighterMax = levelFighter.reduce((memo, value) => {
+
+  var i;
+  var allLevelFighter = [];
+  for (i = 0; i < fighter.length; i++) {
+    allLevelFighter.push(fighter[i].count)
+  };
+
+  const levelFighterMax = allLevelFighter.reduce((memo, value) => {
     return Math.max(memo, value);
   }, 0);
+  
   var maxUnit;
   if (levelFighterMax < 500) {
     var maxUnit = 500;
@@ -17,15 +26,12 @@ function BattleWidget(props){
   } if (levelFighterMax > 5000) {
     var maxUnit = levelFighterMax + levelFighterMax* 0.2;
   }
-  var levelFighterEvolved = levelFighter.map(function(n) {
-    return 0;
-  });
   const styleContainer = {
-    width: levelFighter.length * width,
+    width: fighter.length * width,
     height: height
   };
   const styleUnitLine = {
-    width: levelFighter.length * width,
+    width: fighter.length * width,
     height: height * 0.25
   };
   const styleP00 = {
@@ -42,6 +48,7 @@ function BattleWidget(props){
     };
     return <BattleWidgetPlot key={i} {...attributes} />;
   });
+  
   return <div id="container" style={styleContainer}>
     <p className="p-00" style={styleP00}>0.0</p>
     <div className="allcontainerunitline">
@@ -66,7 +73,8 @@ BattleWidget.propTypes = {
   levelFighter: PropTypes.array,
   color: PropTypes.string,
   height: PropTypes.number,
-  width: PropTypes.number
+  width: PropTypes.number,
+  fighter: PropTypes.array
 };
 
 export default BattleWidget;
