@@ -52,6 +52,7 @@ body {
 #widgetbattle #container .loadercontainer .loader p {
   text-align: center;
   padding: 7px 0 0 0;
+  margin: 0 0;
 }
 #widgetbattle #container .loadercontainer img {
   position: absolute;

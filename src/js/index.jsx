@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import BattleWidget from './BattleWidget.jsx';
 
-const levelFighter = [347, 214, 320];
-const color = '#4CFF9E';
-const height = 200;
-const width = 100;
+const levelFighter = [530, 214, 320, 450, 329, 180];
+const color = '#FFEAA1';
+const height = 150;
+const width = 90;
 
 ReactDOM.render(
   <BattleWidget levelFighter={levelFighter} height={height} width={width} color={color} />,

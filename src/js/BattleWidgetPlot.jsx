@@ -5,24 +5,25 @@ function BattleWidgetPlot(props){
   const widthImg = width * 0.66;
   const marginLeftImg = width * 0.17;
   const widthLoader = width * 0.80;
+  const marginImgLoader = 10;
   const styleLoaderContainer = {
     width: width,
     height: height
   };
-  const heightLoader = ( level * 100 ) / maxUnit + '%';
-  const marginTopLoader = ( 100 - ( level * 100 ) / maxUnit ) * ( height / 100 );
+  const heightLoader = ( level * height ) / maxUnit;
+  const marginTopLoader = height - heightLoader;
   var styleLoader = {
     width: width * 0.8,
     marginLeft: width * 0.1,
     background: color,
     width: widthLoader,
     height: heightLoader,
-    marginTop: marginTopLoader + '%'
+    marginTop: marginTopLoader
   };
   const styleProfileImg = {
     width: widthImg,
     marginLeft: marginLeftImg,
-    marginTop: - widthImg + marginTopLoader - 10
+    marginTop: marginTopLoader - widthImg - marginImgLoader
   };
   return <div className="loadercontainer" style={styleLoaderContainer}>
     <img src="img/profile.png" style={styleProfileImg}/>
