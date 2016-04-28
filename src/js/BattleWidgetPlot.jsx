@@ -1,7 +1,8 @@
 import React, {PropTypes} from 'react';
 
 function BattleWidgetPlot(props){
-  const {level, maxUnit, width, height, color} = props;
+  const {level, maxUnit, width, height, fighter, color, allLevelFighter, allColor, allName} = props;
+  // for (i = 0; i < fighter.length; i++) {
   const widthImg = width * 0.66;
   const marginLeftImg = width * 0.17;
   const widthLoader = width * 0.80;
@@ -38,7 +39,10 @@ BattleWidgetPlot.propTypes = {
   height: PropTypes.number,
   width: PropTypes.number,
   color: PropTypes.string,
-  level: PropTypes.number
+  level: PropTypes.number,
+  allName: PropTypes.array,
+  allColor: PropTypes.array,
+  allLevelFighter: PropTypes.array,
 };
 
 export default BattleWidgetPlot;

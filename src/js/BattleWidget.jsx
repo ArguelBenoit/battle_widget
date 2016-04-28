@@ -3,14 +3,12 @@ import { connect } from 'react-redux';
 import BattleWidgetPlot from './BattleWidgetPlot.jsx';
 
 function BattleWidget(props){
-  const {fighter, levelFighter, width, height, color} = props;
+  const {fighter, fighters, width, height, color} = props;
   const unitLineHeight = height * 0.25;
 
-  var i;
-  var allLevelFighter = [];
-  for (i = 0; i < fighter.length; i++) {
-    allLevelFighter.push(fighter[i].count)
-  };
+  const allNameFighter = fighters.map(fighter => fighter.name);
+  const allLevelFighter = fighters.map(fighter => fighter.count);
+  const allColorFighter = fighters.map(fighter => fighter.color);
 
   const levelFighterMax = allLevelFighter.reduce((memo, value) => {
     return Math.max(memo, value);
@@ -26,29 +24,32 @@ function BattleWidget(props){
   } if (levelFighterMax > 5000) {
     var maxUnit = levelFighterMax + levelFighterMax* 0.2;
   }
+
   const styleContainer = {
-    width: fighter.length * width,
+    width: allLevelFighter.length * width,
     height: height
   };
   const styleUnitLine = {
-    width: fighter.length * width,
+    width: allLevelFighter.length * width,
     height: height * 0.25
   };
   const styleP00 = {
     marginTop: height - 13
   };
 
-  var content = levelFighter.map(function(level, i){
+  var content = allLevelFighter.map(function(level, i){
+  // for (i = 0; i < fighter.length; i++) {
     const attributes = {
       maxUnit,
       height,
       width,
       color,
-      level
+      level,
+      allLevelFighter
     };
     return <BattleWidgetPlot key={i} {...attributes} />;
   });
-  
+
   return <div id="container" style={styleContainer}>
     <p className="p-00" style={styleP00}>0.0</p>
     <div className="allcontainerunitline">
@@ -70,11 +71,11 @@ function BattleWidget(props){
 }
 
 BattleWidget.propTypes = {
-  levelFighter: PropTypes.array,
   color: PropTypes.string,
   height: PropTypes.number,
   width: PropTypes.number,
-  fighter: PropTypes.array
+  fighters: PropTypes.array,
+  fighter: PropTypes.object
 };
 
 export default BattleWidget;

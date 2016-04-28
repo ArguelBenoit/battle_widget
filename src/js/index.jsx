@@ -2,24 +2,41 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import BattleWidget from './BattleWidget.jsx';
 
-const levelFighter = [530, 214];
+
 const color = '#FFEAA1';
 
 const height = 150;
 const width = 90;
-const fighter = [
-  {
-    name: 'testi',
-    count: '234',
+var fighter;
+
+const fighters = [
+  fighter = {
+    name: 'trololo',
+    count: '8675',
     color: '#FFF'
-  }, {
-    name: 'teston',
-    count: '412',
+  },
+  fighter = {
+    name: 'tralala',
+    count: '3027',
     color: '#666'
+  },
+  fighter = {
+    name: 'Pipi',
+    count: '5678',
+    color: '#126'
   }
 ];
 
+
+
+const attributes = {
+  fighter,
+  fighters,
+  height,
+  width,
+  color
+};
 ReactDOM.render(
-  <BattleWidget fighter={fighter} levelFighter={levelFighter} height={height} width={width} color={color} />,
+  <BattleWidget {...attributes} />,
   document.getElementById('widgetbattle')
 );
