@@ -19,12 +19,13 @@ function BattleWidget(props){
   } if (levelMax < 5000 && levelMax > 1000) {
     var maxUnit = 5000;
   } if (levelMax > 5000) {
-    var maxUnit = levelMax + levelMax* 0.2;
+    var maxUnit = Math.round(levelMax/1000)*1000+1000;
   }
+
 
   const styleContainer = {
     width: allLevelFighter.length * width,
-    height: height
+    height: height,
   };
   const styleUnitLine = {
     width: allLevelFighter.length * width,

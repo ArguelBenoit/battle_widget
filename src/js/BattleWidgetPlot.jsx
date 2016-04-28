@@ -21,7 +21,7 @@ function BattleWidgetPlot(props){
   };
   const styleCount = {
     color: fighter.color,
-    marginTop: marginTopLoader - 25,
+    marginTop: marginTopLoader - 33,
     marginLeft: width * 0.1
   };
   const styleProfileImg = {
