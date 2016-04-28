@@ -1,11 +1,10 @@
 import React, {PropTypes} from 'react';
 
 function BattleWidgetPlot(props){
-  const {maxUnit, fighter, height, width, color, allLevelFighter, allColorFighter, allNameFighter} = props;
-  const widthImg = width * 0.66;
-  const marginLeftImg = width * 0.17;
+  const {maxUnit, fighter, height, width} = props;
+  const widthImg = width * 0.56;
+  const marginLeftImg = width * 0.22;
   const widthLoader = width * 0.80;
-  const marginImgLoader = 10;
   const styleLoaderContainer = {
     width: width,
     height: height
@@ -20,15 +19,27 @@ function BattleWidgetPlot(props){
     height: heightLoader,
     marginTop: marginTopLoader
   };
+  const styleCount = {
+    color: fighter.color,
+    marginTop: marginTopLoader - 25,
+    marginLeft: width * 0.1
+  };
   const styleProfileImg = {
     width: widthImg,
+    height: widthImg,
     marginLeft: marginLeftImg,
-    marginTop: marginTopLoader - widthImg - marginImgLoader
+    marginTop: height + 12
   };
+  const styleContentName = {
+    marginTop: widthImg + 20
+  }
   return <div className="loadercontainer" style={styleLoaderContainer}>
-    <img src="img/profile.png" style={styleProfileImg}/>
-    <div className="loader" style={styleLoader}>
-      <p>{fighter.count}.t</p>
+    <img src={fighter.picture} style={styleProfileImg}/>
+    <p className="count" style={styleCount}>{fighter.count}.t</p>
+    <div className="loader" style={styleLoader}></div>
+    <div style={styleContentName} className="contentname">
+      <p className="namefighter">{fighter.title}</p>
+      <p className="hashtagfighter">{fighter.hashtag}</p>
     </div>
   </div>;
 }
@@ -37,11 +48,7 @@ BattleWidgetPlot.propTypes = {
   maxUnit: PropTypes.number,
   height: PropTypes.number,
   width: PropTypes.number,
-  color: PropTypes.string,
-  level: PropTypes.number,
-  allName: PropTypes.array,
-  allColor: PropTypes.array,
-  allLevelFighter: PropTypes.array,
+  level: PropTypes.number
 };
 
 export default BattleWidgetPlot;

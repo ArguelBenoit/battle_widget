@@ -3,29 +3,23 @@ import { connect } from 'react-redux';
 import BattleWidgetPlot from './BattleWidgetPlot.jsx';
 
 function BattleWidget(props){
-  const {fighters, width, height, color} = props;
+  const {fighters, width, height} = props;
   const unitLineHeight = height * 0.25;
 
-  const allNameFighter = fighters.map(fighter => fighter.name);
   const allLevelFighter = fighters.map(fighter => fighter.count);
-  const allColorFighter = fighters.map(fighter => fighter.color);
-  console.log(allNameFighter);
-  console.log(allLevelFighter);
-  console.log(allColorFighter);
-
-  const levelFighterMax = allLevelFighter.reduce((memo, value) => {
+  const levelMax = allLevelFighter.reduce((memo, value) => {
     return Math.max(memo, value);
   }, 0);
   
   var maxUnit;
-  if (levelFighterMax < 500) {
+  if (levelMax < 500) {
     var maxUnit = 500;
-  } if (levelFighterMax < 1000 && levelFighterMax > 500) {
+  } if (levelMax < 1000 && levelMax > 500) {
     var maxUnit = 1000;
-  } if (levelFighterMax < 5000 && levelFighterMax > 1000) {
+  } if (levelMax < 5000 && levelMax > 1000) {
     var maxUnit = 5000;
-  } if (levelFighterMax > 5000) {
-    var maxUnit = levelFighterMax + levelFighterMax* 0.2;
+  } if (levelMax > 5000) {
+    var maxUnit = levelMax + levelMax* 0.2;
   }
 
   const styleContainer = {
@@ -45,11 +39,7 @@ function BattleWidget(props){
       maxUnit,
       fighter,
       height,
-      width,
-      color,
-      allLevelFighter,
-      allColorFighter,
-      allNameFighter
+      width
     };
     return <BattleWidgetPlot key={i} {...attributes} />;
   });
@@ -78,8 +68,7 @@ BattleWidget.propTypes = {
   color: PropTypes.string,
   height: PropTypes.number,
   width: PropTypes.number,
-  fighters: PropTypes.array,
-  fighter: PropTypes.object
+  fighters: PropTypes.array
 };
 
 export default BattleWidget;

@@ -3,24 +3,42 @@ import ReactDOM from 'react-dom';
 import BattleWidget from './BattleWidget.jsx';
 
 
-const color = '#FFEAA1';
+// Best color picker 
+// https://color.adobe.com/
 
-const height = 150;
-const width = 90;
-
+const height = 240;
+const width = 100;
 const fighters = [
   {
-    name: 'trololo',
-    count: '8675',
-    color: '#FFF'
+    picture: 'https://cdn.tutsplus.com/net/uploads/2013/08/github-collab-retina-preview.gif',
+    hashtag: '#github',
+    title: 'Github', 
+    count: '456',
+    color: '#FFA51C'
   }, {
-    name: 'tralala',
-    count: '3027',
-    color: '#666'
+    picture: 'https://www.seeklogo.net/wp-content/uploads/2015/08/instagram-icon-circle-vector-logo.png',
+    hashtag: '#instagram',
+    title: 'Instagram',
+    count: '230',
+    color: '#E8E41A',
   }, {
-    name: 'Pipi',
-    count: '5678',
-    color: '#126'
+    picture: 'https://pbs.twimg.com/profile_images/716139129227124737/-qjHx0ur.jpg',
+    hashtag: '#pornhub',
+    title: 'Pornhub',
+    count: '820',
+    color: 'pink'
+  }, {
+    picture: 'http://www.cen-centre.org/fichiers/images/Newsletter/Fevrier_2014/Logo_Facebook.jpg',
+    hashtag: '#facebook',
+    title: 'Facebook',
+    count: '478',
+    color: '#29FF56'
+  }, {
+    picture: 'http://www.referencement-2000.com/wp-content/uploads/2016/03/twitter-logo-618-340x300.jpg',
+    hashtag: '#twitter',
+    title: 'Twitter',
+    count: '178',
+    color: '#1AB3E8'
   }
 ];
 
@@ -29,8 +47,7 @@ const fighters = [
 const attributes = {
   fighters,
   height,
-  width,
-  color
+  width
 };
 ReactDOM.render(
   <BattleWidget {...attributes} />,
