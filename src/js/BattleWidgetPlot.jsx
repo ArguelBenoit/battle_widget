@@ -1,8 +1,7 @@
 import React, {PropTypes} from 'react';
 
 function BattleWidgetPlot(props){
-  const {level, maxUnit, width, height, fighter, color, allLevelFighter, allColor, allName} = props;
-  // for (i = 0; i < fighter.length; i++) {
+  const {maxUnit, fighter, height, width, color, allLevelFighter, allColorFighter, allNameFighter} = props;
   const widthImg = width * 0.66;
   const marginLeftImg = width * 0.17;
   const widthLoader = width * 0.80;
@@ -11,12 +10,12 @@ function BattleWidgetPlot(props){
     width: width,
     height: height
   };
-  const heightLoader = ( level * height ) / maxUnit;
+  const heightLoader = ( fighter.count * height ) / maxUnit;
   const marginTopLoader = height - heightLoader;
   var styleLoader = {
     width: width * 0.8,
     marginLeft: width * 0.1,
-    background: color,
+    background: fighter.color,
     width: widthLoader,
     height: heightLoader,
     marginTop: marginTopLoader
@@ -29,7 +28,7 @@ function BattleWidgetPlot(props){
   return <div className="loadercontainer" style={styleLoaderContainer}>
     <img src="img/profile.png" style={styleProfileImg}/>
     <div className="loader" style={styleLoader}>
-      <p>{level}.t</p>
+      <p>{fighter.count}.t</p>
     </div>
   </div>;
 }

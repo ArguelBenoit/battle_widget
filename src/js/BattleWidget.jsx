@@ -3,12 +3,15 @@ import { connect } from 'react-redux';
 import BattleWidgetPlot from './BattleWidgetPlot.jsx';
 
 function BattleWidget(props){
-  const {fighter, fighters, width, height, color} = props;
+  const {fighters, width, height, color} = props;
   const unitLineHeight = height * 0.25;
 
   const allNameFighter = fighters.map(fighter => fighter.name);
   const allLevelFighter = fighters.map(fighter => fighter.count);
   const allColorFighter = fighters.map(fighter => fighter.color);
+  console.log(allNameFighter);
+  console.log(allLevelFighter);
+  console.log(allColorFighter);
 
   const levelFighterMax = allLevelFighter.reduce((memo, value) => {
     return Math.max(memo, value);
@@ -37,15 +40,16 @@ function BattleWidget(props){
     marginTop: height - 13
   };
 
-  var content = allLevelFighter.map(function(level, i){
-  // for (i = 0; i < fighter.length; i++) {
+  var content = fighters.map(function(fighter, i){
     const attributes = {
       maxUnit,
+      fighter,
       height,
       width,
       color,
-      level,
-      allLevelFighter
+      allLevelFighter,
+      allColorFighter,
+      allNameFighter
     };
     return <BattleWidgetPlot key={i} {...attributes} />;
   });
