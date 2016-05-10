@@ -1,55 +1,28 @@
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, connect } from 'redux';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import BattleWidget from './BattleWidget.jsx';
+import data from './action';
+import reducer from './reducer';
 
+const store = createStore(reducer);
+console.log(store);
 
-// Best color picker 
-// https://color.adobe.com/
+setTimeout(function(){
+  store.dispatch(data())
+}, 2000)
 
 const height = 240;
-const width = 90;
-const fighters = [
-  {
-    picture: 'https://cdn.tutsplus.com/net/uploads/2013/08/github-collab-retina-preview.gif',
-    hashtag: '#github',
-    title: 'Github', 
-    count: '6456',
-    color: '#FFA51C'
-  }, {
-    picture: 'https://www.seeklogo.net/wp-content/uploads/2015/08/instagram-icon-circle-vector-logo.png',
-    hashtag: '#instagram',
-    title: 'Instagram',
-    count: '4230',
-    color: '#E8E41A',
-  }, {
-    picture: 'https://pbs.twimg.com/profile_images/716139129227124737/-qjHx0ur.jpg',
-    hashtag: '#pornhub',
-    title: 'Pornhub',
-    count: '5420',
-    color: 'pink'
-  }, {
-    picture: 'http://www.cen-centre.org/fichiers/images/Newsletter/Fevrier_2014/Logo_Facebook.jpg',
-    hashtag: '#facebook',
-    title: 'Facebook',
-    count: '3478',
-    color: '#29FF56'
-  }, {
-    picture: 'http://www.referencement-2000.com/wp-content/uploads/2016/03/twitter-logo-618-340x300.jpg',
-    hashtag: '#twitter',
-    title: 'Twitter',
-    count: '8178',
-    color: '#1AB3E8'
-  }
-];
-
-
+const width = 120;
 
 const attributes = {
-  fighters,
   height,
   width
 };
-ReactDOM.render(
-  <BattleWidget {...attributes} />,
+render(
+  <Provider store={store}>
+    <BattleWidget {...attributes} />
+  </Provider>,
   document.getElementById('widgetbattle')
-);
+)

@@ -5,7 +5,6 @@ import BattleWidgetPlot from './BattleWidgetPlot.jsx';
 function BattleWidget(props){
   const {fighters, width, height} = props;
   const unitLineHeight = height * 0.25;
-
   const allLevelFighter = fighters.map(fighter => fighter.count);
   const levelMax = allLevelFighter.reduce((memo, value) => {
     return Math.max(memo, value);
@@ -21,7 +20,6 @@ function BattleWidget(props){
   } if (levelMax > 5000) {
     var maxUnit = Math.round(levelMax/1000)*1000+1000;
   }
-
 
   const styleContainer = {
     width: allLevelFighter.length * width,
@@ -44,7 +42,6 @@ function BattleWidget(props){
     };
     return <BattleWidgetPlot key={i} {...attributes} />;
   });
-
   return <div id="container" style={styleContainer}>
     <p className="p-00" style={styleP00}>0.0</p>
     <div className="allcontainerunitline">
@@ -64,12 +61,14 @@ function BattleWidget(props){
     {content}
   </div>;
 }
-
 BattleWidget.propTypes = {
   color: PropTypes.string,
   height: PropTypes.number,
   width: PropTypes.number,
-  fighters: PropTypes.array
+  fighters: PropTypes.array.isRequired
 };
-
-export default BattleWidget;
+export default connect(function(state){
+  return {
+    fighters: state
+  };
+})(BattleWidget);

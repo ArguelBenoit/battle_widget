@@ -1,0 +1,21 @@
+[
+  {
+    picture: 'https://cdn.tutsplus.com/net/uploads/2013/08/github-collab-retina-preview.gif',
+    hashtag: '#github',
+    title: 'Github', 
+    count: 9879,
+    color: '#FFA51C'
+  }, {
+    picture: 'http://www.cen-centre.org/fichiers/images/Newsletter/Fevrier_2014/Logo_Facebook.jpg',
+    hashtag: '#facebook',
+    title: 'Facebook',
+    count: 3478,
+    color: '#29FF56'
+  }, {
+    picture: 'http://www.referencement-2000.com/wp-content/uploads/2016/03/twitter-logo-618-340x300.jpg',
+    hashtag: '#twitter',
+    title: 'Twitter',
+    count: 8178,
+    color: '#1AB3E8'
+  }
+]
