@@ -12,7 +12,6 @@ function BattleWidgetPlot(props){
   const heightLoader = ( fighter.count * height ) / maxUnit;
   const marginTopLoader = height - heightLoader;
   var styleLoader = {
-    width: width * 0.8,
     marginLeft: width * 0.1,
     background: fighter.color,
     width: widthLoader,
@@ -32,8 +31,8 @@ function BattleWidgetPlot(props){
   };
   const styleContentName = {
     marginTop: widthImg + 20
-  }
-  return <div className="loadercontainer" style={styleLoaderContainer}>
+  };
+   return <div className="loadercontainer" style={styleLoaderContainer}>
     <img src={fighter.picture} style={styleProfileImg}/>
     <p className="count" style={styleCount}>{fighter.count}.t</p>
     <div className="loader" style={styleLoader}></div>
@@ -48,7 +47,8 @@ BattleWidgetPlot.propTypes = {
   maxUnit: PropTypes.number,
   height: PropTypes.number,
   width: PropTypes.number,
-  level: PropTypes.number
+  level: PropTypes.number,
+  fighter: PropTypes.array
 };
 
 export default BattleWidgetPlot;

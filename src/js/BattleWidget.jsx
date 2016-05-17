@@ -4,7 +4,6 @@ import BattleWidgetPlot from './BattleWidgetPlot.jsx';
 
 function BattleWidget(props){
   const {fighters, width, height} = props;
-  const unitLineHeight = height * 0.25;
   const allLevelFighter = fighters.map(fighter => fighter.count);
   const levelMax = allLevelFighter.reduce((memo, value) => {
     return Math.max(memo, value);
@@ -12,18 +11,18 @@ function BattleWidget(props){
   
   var maxUnit;
   if (levelMax < 500) {
-    var maxUnit = 500;
+    maxUnit = 500;
   } if (levelMax < 1000 && levelMax > 500) {
-    var maxUnit = 1000;
+    maxUnit = 1000;
   } if (levelMax < 5000 && levelMax > 1000) {
-    var maxUnit = 5000;
+    maxUnit = 5000;
   } if (levelMax > 5000) {
-    var maxUnit = Math.round(levelMax/1000)*1000+1000;
+    maxUnit = Math.round(levelMax/1000)*1000+1000;
   }
 
   const styleContainer = {
     width: allLevelFighter.length * width,
-    height: height,
+    height: height
   };
   const styleUnitLine = {
     width: allLevelFighter.length * width,
@@ -32,7 +31,6 @@ function BattleWidget(props){
   const styleP00 = {
     marginTop: height - 13
   };
-
   var content = fighters.map(function(fighter, i){
     const attributes = {
       maxUnit,

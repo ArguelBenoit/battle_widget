@@ -1,4 +1,3 @@
-import data_json from '../data';
 import {DATA} from './action';
 const initialState = []; 
 
