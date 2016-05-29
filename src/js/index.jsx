@@ -10,7 +10,7 @@ const store = createStore(reducer);
 console.log(store);
 
 setTimeout(function(){
-  store.dispatch(data())
+  store.dispatch(data());
 }, 2000);
 
 const height = 240;
@@ -20,6 +20,7 @@ const attributes = {
   height,
   width
 };
+
 render(
   <Provider store={store}>
     <BattleWidget {...attributes} />
